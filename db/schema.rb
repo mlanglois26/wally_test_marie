@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_13_094047) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_13_111719) do
   create_table "bookings", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
@@ -18,6 +18,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_13_094047) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
+    t.integer "flat_id", null: false
+    t.index ["flat_id"], name: "index_bookings_on_flat_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
@@ -43,7 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_13_094047) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "role"
-    t.string "fisrt_name"
+    t.string "first_name"
     t.string "last_name"
     t.string "phone_number"
     t.string "address"
@@ -53,6 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_13_094047) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "flats"
   add_foreign_key "bookings", "users"
   add_foreign_key "flats", "users"
 end
