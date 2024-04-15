@@ -6,6 +6,12 @@ ruby "3.1.2"
 gem "devise"
 gem "dotenv-rails"
 gem "cloudinary"
+gem "sassc-rails"
+gem 'bootstrap', '~> 5.0.0'
+gem 'font-awesome-sass'
+gem "pundit"
+gem "simple_form"
+gem 'flatpickr'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.6"
@@ -20,7 +26,7 @@ gem "sqlite3", "~> 1.4"
 gem "puma", "~> 5.0"
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
+# gem "importmap-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
@@ -64,3 +70,11 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
+
+gem "cssbundling-rails", "~> 1.4"
+
+gem "jsbundling-rails", "~> 1.3"
+
+# gem "importmap-rails", "~> 2.0"
+
+gem "simple_calendar", "~> 3.0"

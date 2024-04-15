@@ -10,9 +10,9 @@ require "open-uri"
 
 puts "Destroy all Resources..."
 
-# User.destroy_all
-# Flat.destroy_all
-# Booking.destroy_all
+User.destroy_all
+Flat.destroy_all
+Booking.destroy_all
 
 puts "-----------------------------------------------------"
 
@@ -33,8 +33,11 @@ ZIP = %w[75012 94100 26000 45270 59560 62471]
 
 PHONE_NUMBER = %w[0645224500 0606060606 0736124785 0632146598]
 
-puts "-----------------------------------------------------"
+PHOTO_URL = ["https://res.cloudinary.com/djumrtj1m/image/upload/v1713007814/test_wally_1_uqqgww.jpg",
+"https://res.cloudinary.com/djumrtj1m/image/upload/v1713019142/wally_2_r6fxbc.jpg",
+"https://res.cloudinary.com/djumrtj1m/image/upload/v1713019149/wally_3_et356b.jpg"]
 
+puts "-----------------------------------------------------"
 
 puts "Initializing users..."
 
@@ -129,30 +132,22 @@ puts "-----------------------------------------------------"
 
 puts "Initializing Flats..."
 
-# 5.times do
+5.times do
 
-# flat_1 = Flat.create(
-#   name: "Apart 1",
-#   price_per_night: PRICE.sample,
-#   address: ADDRESS.sample,
-#   rating: RATING.sample,
-#   city: CITY.sample,
-#   user_id: owner_1.id #revoir ca make sure it s an owner
-# )
-# # flat_1.photo.attach(io: URI.open("https://res.cloudinary.com/djumrtj1m/image/upload/v1713007814/test_wally_1_uqqgww.jpg"), filename: "seed.png", content_type: "image/png")
+flat_1 = Flat.create(
+  name: "Apart 1",
+  price_per_night: PRICE.sample,
+  address: ADDRESS.sample,
+  rating: RATING.sample,
+  city: CITY.sample,
+  user_id: owner_1.id #revoir ca make sure it s an owner
+)
 
-# end
+# image_path = Rails.root.join('app', 'assets', 'images', 'wally_2.jpg')
+# flat_1.photos.attach(io: File.open(image_path), filename: 'wally_2.jpg')
 
-5.times do |i|
-  flat = Flat.create(
-    name: "Apart #{i+1}", # Utilisation d'un nom unique pour chaque appartement
-    price_per_night: PRICE.sample,
-    address: ADDRESS.sample,
-    rating: RATING.sample,
-    city: CITY.sample,
-    user_id: owner_1.id # Assurez-vous que c'est un propriétaire
-  )
-end
+# PHOTO_URL.shuffle.each { |url| flat_1.photos.attach(io: URI.open(url), filename: "seed.png") }
+# flat_1.photos.attach(io: URI.open("https://res.cloudinary.com/djumrtj1m/image/upload/v1713019149/wally_3_et356b.jpg"), filename: "seed.png")
 
 
 flat_2 = Flat.create(
@@ -161,10 +156,10 @@ flat_2 = Flat.create(
   address: ADDRESS.sample,
   rating: RATING.sample,
   city: CITY.sample,
-  user_id: owner_2.id #revoir ca make sure it s an owner
+  user_id: owner_2.id
 )
-# flat_2.photo.attach(io: URI.open("https://res.cloudinary.com/djumrtj1m/image/upload/v1713007814/test_wally_1_uqqgww.jpg"), filename: "seed.png", content_type: "image/png")
 
+end
 
 flat_3 = Flat.create(
   name: "Apart 3",
@@ -172,9 +167,10 @@ flat_3 = Flat.create(
   address: ADDRESS.sample,
   rating: RATING.sample,
   city: CITY.sample,
-  user_id: owner_3.id #revoir ca make sure it s an owner
+  user_id: owner_3.id
 )
-# flat_3.photo.attach(io: URI.open("https://res.cloudinary.com/djumrtj1m/image/upload/v1713007814/test_wally_1_uqqgww.jpg"), filename: "seed.png", content_type: "image/png")
+
+puts "flats created"
 
 puts "-----------------------------------------------------"
 
@@ -190,6 +186,8 @@ booking = Booking.new(
   user_id: tenant_2.id,
   flat_id: flat_3.id
 )
+
+puts "bokking created"
 
 puts "-----------------------------------------------------"
 

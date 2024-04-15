@@ -1,0 +1,16 @@
+<% flats.each do |flat| %>
+  <div class="col-3 mb-3 mt-3">
+      <div class="flat-card h-100">
+        <%= link_to flat_path(flat), class:"text-decoration-none" do %>
+          <div class="flat-image">
+            <img src="https://res.cloudinary.com/djumrtj1m/image/upload/v1713007814/test_wally_1_uqqgww.jpg" class="card-img-top" alt="...">
+          </div>
+          <div class="flat-description">
+            <span class="flat-name"><%= flat.name.capitalize %></span>
+            <span>City: <%= flat.city.capitalize %></span>
+            <span><strong><%= flat.price_per_night %> €</strong> per night</span>
+          </div>
+        <% end %>
+      </div>
+  </div>
+<% end %>

@@ -1,0 +1,83 @@
+<%= render 'shared/navbar' %>
+
+<div class="container margin-top-negative mt-3">
+
+  <div class="row mt-3">
+
+    <div class="col-8 pl-5">
+      <%= image_tag "https://res.cloudinary.com/djumrtj1m/image/upload/v1713007814/test_wally_1_uqqgww.jpg", height: 480, width: 680, alt: "flat pic" %>
+    </div>
+
+    <div class="col-4">
+      <div class="sticky-calendar">
+
+        <%= form_with(model: @booking, class: "form") do |form| %>
+          <% if form.object.errors.any? %>
+            <div class="alert alert-danger">
+              <h2><%= pluralize(form.object.errors.count, "error") %> prohibited this booking from being saved:</h2>
+              <ul>
+                <% form.object.errors.full_messages.each do |error| %>
+                  <li><%= error %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="form-group p-3">
+            <%= form.hidden_field :flat_id, value: @flat.id, class: "form-control" %>
+            <%= form.hidden_field :user_id, as: :hidden, input_html: { value: current_user.id }, class: "form-control" %>
+          </div>
+
+          <div class="form-group p-3">
+            <%= form.label :start_date, style: "display: block" %>
+            <%= form.datetime_field :start_date, class: "form-control" %>
+          </div>
+
+          <div class="form-group p-3">
+            <%= form.label :end_date, style: "display: block" %>
+            <%= form.datetime_field :end_date, class: "form-control" %>
+          </div>
+
+          <div class="form-group p-3">
+            <%= form.submit "Book!", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row mt-3">
+
+    <div class="col-8 ps-1">
+      <h1 class="pt-1 pb-1 m-0"><%= @flat.name.capitalize %></h1>
+      <div class="border-bottom pt-3 pb-3">
+
+        <div class="d-flex align-items-center pt-3 pb-3">
+          <%= image_tag "wally_2.jpg", height: 30, width: 30, alt: "img" %>
+          <div class="ps-3">
+            <div class="text-black"><%= "#{@flat.city}" %></div>
+            <div class="text-gray"><p class="m-0 fw-lighter" style="font-size: 14px">Localisation</p></div>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center pt-3 pb-3">
+          <%= image_tag "wally_2.jpg", height: 30, width: 30, alt: "img" %>
+          <div class="ps-3">
+            <div class="text-black"><%= "#{@flat.rating} stars" %></div>
+            <div class="text-gray"><p class="m-0 fw-lighter" style="font-size: 14px">Give an average quality about the flat</p></div>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center pt-3 pb-3">
+          <%= image_tag "wally_2.jpg", height: 30, width: 30, alt: "img" %>
+          <div class="ps-3">
+            <div class="text-black"><%= "#{@flat.price_per_night} euros" %></div>
+            <div class="text-gray"><p class="m-0 fw-lighter" style="font-size: 14px">Give you information about the price per night of the flat</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

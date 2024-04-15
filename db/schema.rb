@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_13_132320) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_15_080335) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -46,7 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_13_132320) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
-    t.integer "flat_id", null: false
+    t.integer "flat_id"
     t.index ["flat_id"], name: "index_bookings_on_flat_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -79,6 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_13_132320) do
     t.string "address"
     t.string "city"
     t.string "zip"
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
